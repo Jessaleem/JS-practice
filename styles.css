@@ -8,18 +8,28 @@
   border-radius: 20px;
 }
 
+.title {
+  text-align: center;
+}
+
 .photo {
   width: 200px;
   height: 200px;
+  margin: 3px;
 }
 
 .random {
-  margin-top: 15px;
-  margin-bottom: 20px;
-  width: 100px;
+  width: 150px;
   background-color: #fff;
   border: solid 2px;
   border-radius: 5px;
-  padding: 2% 0%;
+  padding: 2% 2%;
   cursor: pointer;
+}
+
+.btnContainer {
+  margin-top: 5px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }
