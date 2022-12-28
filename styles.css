@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 300px;
+  border: solid 2px;
+  border-radius: 20px;
+}
+
+.photo {
+  width: 200px;
+  height: 200px;
+}
+
+.random {
+  margin-top: 15px;
+  margin-bottom: 20px;
+  width: 100px;
+  background-color: #fff;
+  border: solid 2px;
+  border-radius: 5px;
+  padding: 2% 0%;
+  cursor: pointer;
+}

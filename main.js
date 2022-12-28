@@ -7,10 +7,13 @@ const URL = 'https://api.thecatapi.com/v1/images/search';
 //     img.src = data[0].url;
 //   });
 
-(async () => {
+const fetchData = async () => {
   const res = await fetch(URL);
   const data = await res.json();
   console.log(data);
   const img = document.querySelector('img');
   img.src = data[0].url;
-})();
+};
+
+const button = document.querySelector('button');
+button.addEventListener('click', fetchData);
