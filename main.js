@@ -1,5 +1,10 @@
-const API_URL =
+const API_URL_ALL =
   'https://api.thecatapi.com/v1/images/search?limit=10&api_key=live_rMz40OOpgEye3qNzvFMioVWADhq4bZz7gmynp1LL4uZRsbliTK6dLa4F0PJBTAeM';
+
+const API_URL_FAVOURITES =
+  'https://api.thecatapi.com/v1/favourites?limit=10&api_key=live_rMz40OOpgEye3qNzvFMioVWADhq4bZz7gmynp1LL4uZRsbliTK6dLa4F0PJBTAeM';
+
+const spanError = document.getElementById('error');
 let listContainer = document.getElementById('list-container');
 let mainContainer = document.getElementById('main-container');
 const list = document.createDocumentFragment();
@@ -17,12 +22,15 @@ const button = document.createElement('button');
 
 const fetchData = async () => {
   try {
-    const res = await fetch(API_URL);
+    const res = await fetch(API_URL_ALL);
     const data = await res.json();
-    // console.log(data);
-    showData(data);
-    // const img = document.querySelector('img');
-    // img.src = data[0].url;
+    if (res.status !== 200) {
+      spanError.innerHTML = 'Hubo un error:' + res.status;
+    } else {
+      showData(data);
+      // const img = document.querySelector('img');
+      // img.src = data[0].url;
+    }
   } catch (error) {
     console.log(`error: ${error}`);
   }
@@ -58,3 +66,15 @@ const showData = (data2) => {
 
   mainContainer.appendChild(div);
 };
+
+const favoriteCats = async () => {
+  const res = await fetch(API_URL_FAVOURITES);
+  const data = await res.json();
+  // console.log(data.message);
+
+  if (res.status !== 200) {
+    spanError.innerHTML = 'Hubo un error:' + res.status;
+  }
+};
+
+favoriteCats();
