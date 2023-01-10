@@ -49,7 +49,9 @@ const showData = (data2) => {
 
     const favorite = document.createElement('button');
     favorite.classList.add('favBtn');
+    favorite.setAttribute('id', 'favBtn');
     favorite.innerHTML = 'Save as favorite';
+    favorite.addEventListener('click', saveFavCats);
 
     article.appendChild(image);
     article.appendChild(favorite);
@@ -70,7 +72,7 @@ const showData = (data2) => {
 const favoriteCats = async () => {
   const res = await fetch(API_URL_FAVOURITES);
   const data = await res.json();
-  // console.log(data.message);
+  console.log(data);
 
   if (res.status !== 200) {
     spanError.innerHTML = 'Hubo un error:' + res.status;
@@ -78,3 +80,19 @@ const favoriteCats = async () => {
 };
 
 favoriteCats();
+
+async function saveFavCats() {
+  const res = await fetch(API_URL_FAVOURITES, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      image_id: '101293337',
+    }),
+  });
+  const data = await res.json();
+  console.log(data);
+
+  if (res.status !== 200) {
+    spanError.innerHTML = 'Hubo un error:' + res.status;
+  }
+}
